@@ -37,12 +37,23 @@ object Lab4 extends jsy.util.JsyApplication {
   /* Lists */
   
   def compressRec[A](l: List[A]): List[A] = l match {
-    case Nil | _ :: Nil => throw new UnsupportedOperationException
-    case h1 :: (t1 @ (h2 :: _)) => throw new UnsupportedOperationException
+    // matches singleton
+    case Nil | _ :: Nil => l
+
+    //matches all lists with multiple items, h1 = first element, h2 = 2nd element, t1 = rest of list INCLUDING 2nd element
+    //if (h1==h2), we have consecutive duplicate => call compress rec without first element
+    //if (h1!=h2), we do not have duplication => return compressRec(t1) appended to first element
+    case h1 :: (t1 @ (h2 :: _)) =>  if (h1==h2) compressRec(t1) else h1 :: compressRec(t1)
+
   }
   
   def compressFold[A](l: List[A]): List[A] = l.foldRight(Nil: List[A]){
-    (h, acc) => throw new UnsupportedOperationException
+    (h, acc) => {
+      acc match {
+        case h1 :: _ => if (h==h1) acc else h :: acc
+        case Nil => h :: acc
+      }
+    }
   }
   
   def mapFirst[A](f: A => Option[A])(l: List[A]): List[A] = l match {

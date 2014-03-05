@@ -3,7 +3,7 @@ import jsy.lab4.ast._
 import Lab4._
 
 class Lab4Spec extends FlatSpec {
-
+  
   "compressRec/compressFold" should "compress List(1, 2, 2, 3, 3, 3)" in {
     val l1 = List(1, 2, 2, 3, 3, 3)
     val gold1 = List(1, 2, 3)
