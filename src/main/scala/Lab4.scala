@@ -74,8 +74,12 @@ object Lab4 extends jsy.util.JsyApplication {
     
     def foldLeft[A](z: A)(f: (A, Int) => A): A = {
       def loop(acc: A, t: Tree): A = t match {
-        case Empty => throw new UnsupportedOperationException
-        case Node(l, d, r) => throw new UnsupportedOperationException
+        case Empty => acc
+        //Solution might be too much,
+        //case Node(l, d, r) => loop(f(acc, d), r) will work if we assume tree is sorted
+        case Node(Empty, d, r) => loop(f(acc, d), r)
+        case Node(l, d, Empty) => f(acc,d)
+        case Node(l, d, r) => loop(f(z, d), l)
       }
       loop(z, this)
     }
@@ -100,7 +104,14 @@ object Lab4 extends jsy.util.JsyApplication {
   
   def strictlyOrdered(t: Tree): Boolean = {
     val (b, _) = t.foldLeft((true, None: Option[Int])){
-      throw new UnsupportedOperationException
+      (acc, i) => (acc, i) match {
+        //short circuit
+        case ((false, i1), i2) => (false, i1)
+        //initial condition
+        case ((accB, None), i2) => (true, Some(i2))
+        //gooooooooooooooo
+        case ((accB, Some(i1)), i2) => if (i1 < i2) (true, Some(i2)) else (false, Some(i2))
+      }
     }
     b
   }
