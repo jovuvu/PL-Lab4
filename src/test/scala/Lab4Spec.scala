@@ -39,14 +39,5 @@ class Lab4Spec extends FlatSpec {
     assert(!strictlyOrdered(treeFromList(List(3, 4,1,1,2))))
     assert(strictlyOrdered(treeFromList(List(3, 4, 1,2))))
   } 
-
-//  "typeInfer" should "check for static type errors" in {
-//    val x = true
-//    val e1 = Unary(Not, B(x))
-//    assert(step(e1) === B(false))
-//    val y = 10
-//    val e2 = Unary(Not, N(y))
-//    assert(step(e2) === B(false))
-//  }
   // Probably want to write some tests for typeInfer, substitute, and step.
 }

@@ -175,7 +175,10 @@ object Lab4 extends jsy.util.JsyApplication {
           case _ => err(TUndefined, e1)
         }
         // Bind to env2 an environment that extends env1 with bindings for params.
-        val env2 = throw new UnsupportedOperationException
+        val env2 = params.foldLeft(env1: Map[String, Typ])((env1, h) => env1 + h)
+//        println("env: " + env1)
+//        println("params: " + params)
+//        println("env2: " + env2)
         // Match on whether the return type is specified.
         tann match {
           case None => throw new UnsupportedOperationException
