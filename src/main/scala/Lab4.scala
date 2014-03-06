@@ -36,6 +36,7 @@ object Lab4 extends jsy.util.JsyApplication {
   
   /* Lists */
   
+  
   def compressRec[A](l: List[A]): List[A] = l match {
     // matches singleton
     case Nil | _ :: Nil => l
@@ -78,7 +79,8 @@ object Lab4 extends jsy.util.JsyApplication {
         case Node(l, d, r) => 
         	(l, d, r) match {
         	  case (Empty, d, r) => loop(f(acc, d), r)
-        	  //case (l, d, r) => loop(z, l)
+        	  case (l, d, Empty) => f(acc, d)
+        	  case (l, d, r) => loop(f(loop(z, l),d), r)
         	}
       }
       loop(z, this)
@@ -146,6 +148,7 @@ object Lab4 extends jsy.util.JsyApplication {
         case tgot => err(tgot, e1)
       }
       case Unary(Not, e1) =>
+        val inferredTyp = typ(e1)
         throw new UnsupportedOperationException
       case Binary(Plus, e1, e2) =>
         throw new UnsupportedOperationException

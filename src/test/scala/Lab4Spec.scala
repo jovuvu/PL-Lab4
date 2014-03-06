@@ -25,7 +25,7 @@ class Lab4Spec extends FlatSpec {
     }
   }
   
-  "foldLeft2" should "enable implementing treeFromList and sum" in {
+  "foldLeft (unordered input)" should "enable implementing treeFromList and sum" in {
     assertResult(15){
       sum(treeFromList(List(4,5,1, 2, 3)))
     }
@@ -35,6 +35,18 @@ class Lab4Spec extends FlatSpec {
     assert(!strictlyOrdered(treeFromList(List(1,1,2))))
     assert(strictlyOrdered(treeFromList(List(1,2))))
   } 
+  "strictlyOrdered (unordered input)" should "check strict ordering of a binary search tree" in {
+    assert(!strictlyOrdered(treeFromList(List(3, 4,1,1,2))))
+    assert(strictlyOrdered(treeFromList(List(3, 4, 1,2))))
+  } 
 
+//  "typeInfer" should "check for static type errors" in {
+//    val x = true
+//    val e1 = Unary(Not, B(x))
+//    assert(step(e1) === B(false))
+//    val y = 10
+//    val e2 = Unary(Not, N(y))
+//    assert(step(e2) === B(false))
+//  }
   // Probably want to write some tests for typeInfer, substitute, and step.
 }
