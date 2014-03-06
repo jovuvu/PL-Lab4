@@ -75,11 +75,11 @@ object Lab4 extends jsy.util.JsyApplication {
     def foldLeft[A](z: A)(f: (A, Int) => A): A = {
       def loop(acc: A, t: Tree): A = t match {
         case Empty => acc
-        //Solution might be too much,
-        //case Node(l, d, r) => loop(f(acc, d), r) will work if we assume tree is sorted
-        case Node(Empty, d, r) => loop(f(acc, d), r)
-        case Node(l, d, Empty) => f(acc,d)
-        case Node(l, d, r) => loop(f(z, d), l)
+        case Node(l, d, r) => 
+        	(l, d, r) match {
+        	  case (Empty, d, r) => loop(f(acc, d), r)
+        	  //case (l, d, r) => loop(z, l)
+        	}
       }
       loop(z, this)
     }
