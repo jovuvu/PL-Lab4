@@ -39,5 +39,14 @@ class Lab4Spec extends FlatSpec {
     assert(!strictlyOrdered(treeFromList(List(3, 4,1,1,2))))
     assert(strictlyOrdered(treeFromList(List(3, 4, 1,2))))
   } 
+  
+  "typeInfer Function" should "check return type of function" in {
+    val a = Function(None, List.empty, Some(TNumber), Binary(Plus, N(3),N(3)))
+    assert(typeInfer(Map.empty, a) == TNumber)
+    val b = ConstDecl("X", N(3), Function(None, List.empty, Some(TNumber), Binary(Plus, Var("X"),N(3))))
+    assert(typeInfer(Map.empty, b) == TNumber)
+    val c = Function(None, List.empty, Some(TString), Binary(Plus, S("Poo"),S("Poo")))
+    assert(typeInfer(Map.empty, c) == TString)
+  }
   // Probably want to write some tests for typeInfer, substitute, and step.
 }

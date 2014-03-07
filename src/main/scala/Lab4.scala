@@ -149,19 +149,37 @@ object Lab4 extends jsy.util.JsyApplication {
       }
       case Unary(Not, e1) =>
         val inferredTyp = typ(e1)
-        throw new UnsupportedOperationException
-      case Binary(Plus, e1, e2) =>
-        throw new UnsupportedOperationException
+        if (inferredTyp == TBool) TBool else err(inferredTyp, e1)
+        
+      case Binary(Plus, e1, e2) => (typ(e1), typ(e2)) match {
+        case (TNumber, TNumber) => TNumber
+        case (TString, TString) => TString
+        case (te1, te2) => err(te1, e1)
+      }
+        
       case Binary(Minus|Times|Div, e1, e2) => 
-        throw new UnsupportedOperationException
-      case Binary(Eq|Ne, e1, e2) =>
-        throw new UnsupportedOperationException
-      case Binary(Lt|Le|Gt|Ge, e1, e2) =>
-        throw new UnsupportedOperationException
-      case Binary(And|Or, e1, e2) =>
-        throw new UnsupportedOperationException
-      case Binary(Seq, e1, e2) =>
-        throw new UnsupportedOperationException
+        val te1 = typ(e1)
+        if (te1 == typ(e2) == TNumber) te1 else err(te1, e1)
+        
+      case Binary(Eq|Ne, e1, e2) => (typ(e1), typ(e2)) match {
+        case (te1, te2) => if (te1 == te2) TBool else err(te1, e1)
+      }
+        
+      case Binary(Lt|Le|Gt|Ge, e1, e2) => (typ(e1), typ(e2)) match {
+        case (TNumber, TNumber) => TNumber
+        case (TString, TString) => TString
+        case (te1, te2) => err(te1, e1)
+      }
+      
+      case Binary(And|Or, e1, e2) => (typ(e1), typ(e2)) match {
+        case (TBool, TBool) => TBool
+        case (te1, te2) => err(te1, e1)
+      }
+        
+      case Binary(Seq, e1, e2) => (typ(e1), typ(e2)) match {
+        case (te1, te2) => te2
+      }
+      
       case If(e1, e2, e3) =>
         throw new UnsupportedOperationException
       case Function(p, params, tann, e1) => {
@@ -181,8 +199,10 @@ object Lab4 extends jsy.util.JsyApplication {
 //        println("env2: " + env2)
         // Match on whether the return type is specified.
         tann match {
-          case None => throw new UnsupportedOperationException
-          case Some(tret) => throw new UnsupportedOperationException
+          case None => typeInfer(env2, e1)
+          case Some(tret) => 
+            val poop = typeInfer(env2, e1)
+            if (poop == tret) tret else err(poop, e1)
         }
       }
       case Call(e1, args) => typ(e1) match {
