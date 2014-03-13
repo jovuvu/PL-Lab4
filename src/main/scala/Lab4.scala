@@ -275,9 +275,14 @@ object Lab4 extends jsy.util.JsyApplication {
         }
         if (blah == true) Function(None, params, tann, subst(e1)) else e
       case Call(e1, args) =>
-        if (!isValue(e1)) Call(subst(e1),args) else Call(e1,args.foldRight(Nil: List[Expr]){(h, acc) => subst(h) :: acc})
+        if (!isValue(e1)) Call(subst(e1),args) else Call(e1, mapFirst{ (ei: Expr) => if (!isValue(ei)) Some(subst(ei)) else None}(args))
       case Obj(fields) =>
-        throw new UnsupportedOperationException
+        Obj(fields.foldRight(Map.empty: Map[String, Expr]){
+          (h, acc) => h match {
+            case (key, ei) => if(!isValue(ei)) acc + (key -> subst(ei)) else acc + (key -> ei)
+          }
+        })
+        
       case GetField(e1, f) =>
         throw new UnsupportedOperationException
     }
