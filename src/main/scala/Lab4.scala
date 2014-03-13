@@ -201,21 +201,28 @@ object Lab4 extends jsy.util.JsyApplication {
         tann match {
           case None => typeInfer(env2, e1)
           case Some(tret) => 
-            val poop = typeInfer(env2, e1)
-            if (poop == tret) tret else err(poop, e1)
+            val e1Typ = typeInfer(env2, e1)
+            if (e1Typ == tret) tret else err(e1Typ, e1)
         }
       }
       case Call(e1, args) => typ(e1) match {
         case TFunction(params, tret) if (params.length == args.length) => {
           (params, args).zipped.foreach {
-            throw new UnsupportedOperationException
+            case ((key, value), args) => 
+              val argTyp = typ(args)
+              if (value == argTyp) value else err(argTyp, args)
           };
           tret
         }
         case tgot => err(tgot, e1)
       }
       case Obj(fields) =>
-        throw new UnsupportedOperationException
+        val typMap = scala.collection.mutable.Map[String,Typ]()
+        fields.foreach {
+          case (key, value) => typMap += (key -> typ(value))
+        }
+        //return value doesn't matter?  typ(value) above will cause static type error if there is one
+        typMap.head._2
       case GetField(e1, f) =>
         throw new UnsupportedOperationException
     }
@@ -257,10 +264,18 @@ object Lab4 extends jsy.util.JsyApplication {
       case If(e1, e2, e3) => If(subst(e1), subst(e2), subst(e3))
       case Var(y) => if (x == y) v else e
       case ConstDecl(y, e1, e2) => ConstDecl(y, subst(e1), if (x == y) e2 else subst(e2))
-      case Function(p, params, tann, e1) =>
-        throw new UnsupportedOperationException
+      case Function(Some(p),params, tann, e1) => 
+        val blah = params.foldRight(true){
+          (h, acc) => if (x != h && x != p) acc && true else acc && false
+        }
+        if (blah == true) Function(Some(p), params, tann, subst(e1)) else e
+      case Function(None,params, tann, e1) => 
+        val blah = params.foldRight(true){
+          (h, acc) => if (x != h) acc && true else acc && false
+        }
+        if (blah == true) Function(None, params, tann, subst(e1)) else e
       case Call(e1, args) =>
-        throw new UnsupportedOperationException
+        if (!isValue(e1)) Call(subst(e1),args) else Call(e1,args.foldRight(Nil: List[Expr]){(h, acc) => subst(h) :: acc})
       case Obj(fields) =>
         throw new UnsupportedOperationException
       case GetField(e1, f) =>
