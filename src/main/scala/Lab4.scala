@@ -180,8 +180,13 @@ object Lab4 extends jsy.util.JsyApplication {
         case (te1, te2) => te2
       }
       
-      case If(e1, e2, e3) =>
-        throw new UnsupportedOperationException
+      case If(e1, e2, e3) => typ(e1) match {
+        case TBool => (typ(e1),typ(e2)) match {
+          case (te1,te2) if (te1 == te2) => te1
+          case (_,te2) => err(te2,e3)
+        }
+        case tgot => err(tgot,e1)
+      }
       case Function(p, params, tann, e1) => {
         // Bind to env1 an environment that extends env with an appropriate binding if
         // the function is potentially recursive.
