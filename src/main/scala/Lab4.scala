@@ -153,17 +153,22 @@ object Lab4 extends jsy.util.JsyApplication {
         case (te1, te2) => err(te1, e1)
       }
         
-      case Binary(Minus|Times|Div, e1, e2) => 
-        val te1 = typ(e1)
-        if (te1 == typ(e2) == TNumber) te1 else err(te1, e1)
+      case Binary(Minus|Times|Div, e1, e2) => (typ(e1),typ(e2)) match {
+        case (TNumber, TNumber) => TNumber
+        case (te1, te2) => if (te1!=TNumber) err(te1, e1) else err(te2, e2)
+      }
         
-      case Binary(Eq|Ne, e1, e2) => (typ(e1), typ(e2)) match {
-        case (te1, te2) => if (te1 == te2) TBool else err(te1, e1)
+      case Binary(Eq|Ne, e1, e2) => (typ(e1)) match {
+        case te1 if (!hasFunctionTyp(te1)) => typ(e2) match {
+          case te2 if (!hasFunctionTyp(te2)) => te2
+          case tgot => err (tgot, e2)
+        }
+        case tgot => err(tgot, e1)
       }
         
       case Binary(Lt|Le|Gt|Ge, e1, e2) => (typ(e1), typ(e2)) match {
-        case (TNumber, TNumber) => TNumber
-        case (TString, TString) => TString
+        case (TNumber, TNumber) => TBool
+        case (TString, TString) => TBool
         case (te1, te2) => err(te1, e1)
       }
       
@@ -200,12 +205,14 @@ object Lab4 extends jsy.util.JsyApplication {
 //        println("env2: " + env2)
         // Match on whether the return type is specified.
         tann match {
-          case None => typeInfer(env2, e1)
+          case None => TFunction(params, typeInfer(env2, e1))
           case Some(tret) => 
             val e1Typ = typeInfer(env2, e1)
-            if (e1Typ == tret) tret else err(e1Typ, e1)
+            if (e1Typ == tret) TFunction(params, tret) else err(e1Typ, e1)
         }
       }
+      
+      
       case Call(e1, args) => typ(e1) match {
         case TFunction(params, tret) if (params.length == args.length) => {
           (params, args).zipped.foreach {
@@ -218,9 +225,9 @@ object Lab4 extends jsy.util.JsyApplication {
         case tgot => err(tgot, e1)
       }
       case Obj(fields) =>TObj(fields.mapValues(e => typ(e)))
-      case GetField(e1, f) => e1 match {
-        //case Obj(fields) => TObj(typeInfer()
-        case _ => throw new UnsupportedOperationException
+      case GetField(e1, f) => typ(e1) match {
+        case TObj(fields) => fields(f)
+        case tgot => err(tgot, e1)
       }
     }
   }
@@ -262,13 +269,13 @@ object Lab4 extends jsy.util.JsyApplication {
       case Var(y) => if (x == y) v else e
       case ConstDecl(y, e1, e2) => ConstDecl(y, subst(e1), if (x == y) e2 else subst(e2))
       case Function(Some(p),params, tann, e1) => 
-        val blah = params.foldRight(true){
-          (h, acc) => if (x != h && x != p) acc && true else acc && false
+        val blah = params.foldLeft(true){
+          (acc, h) => if (x != h && x != p) acc && true else acc && false
         }
         if (blah == true) Function(Some(p), params, tann, subst(e1)) else e
       case Function(None,params, tann, e1) => 
-        val blah = params.foldRight(true){
-          (h, acc) => if (x != h) acc && true else acc && false
+        val blah = params.foldLeft(true){
+          (acc, h) => if (x != h) acc && true else acc && false
         }
         if (blah == true) Function(None, params, tann, subst(e1)) else e
       case Call(e1, args) =>
@@ -280,7 +287,9 @@ object Lab4 extends jsy.util.JsyApplication {
           }
         })
         
-      case GetField(e1, f) => if (f != x) GetField(step(e1),f) else e
+      case GetField(e1, f) => e1 match {
+        case Obj(fields) => if (f != x) GetField(step(e1),f) else e
+      }
     }
   }
   
