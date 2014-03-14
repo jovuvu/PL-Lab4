@@ -106,14 +106,10 @@ object Lab4 extends jsy.util.JsyApplication {
   
   def strictlyOrdered(t: Tree): Boolean = {
     val (b, _) = t.foldLeft((true, None: Option[Int])){
-      (acc, i) => (acc, i) match {
-        //short circuit
-        case ((false, i1), i2) => (false, i1)
-        //initial condition
-        case ((accB, None), i2) => (true, Some(i2))
-        //gooooooooooooooo
-        case ((accB, Some(i1)), i2) => if (i1 < i2) (true, Some(i2)) else (false, Some(i2))
-      }
+      (acc:(Boolean,Option[Int]),v:Int) => acc match {
+        case (b,None) => (b, Some(v))
+        case (b,Some(nv)) => (b && v > nv, Some(v))
+      } 
     }
     b
   }
@@ -221,15 +217,11 @@ object Lab4 extends jsy.util.JsyApplication {
         }
         case tgot => err(tgot, e1)
       }
-      case Obj(fields) =>
-        val typMap = scala.collection.mutable.Map[String,Typ]()
-        fields.foreach {
-          case (key, value) => typMap += (key -> typ(value))
-        }
-        //return value doesn't matter?  typ(value) above will cause static type error if there is one
-        typMap.head._2
-      case GetField(e1, f) =>
-        throw new UnsupportedOperationException
+      case Obj(fields) =>TObj(fields.mapValues(e => typ(e)))
+      case GetField(e1, f) => e1 match {
+        //case Obj(fields) => TObj(typeInfer()
+        case _ => throw new UnsupportedOperationException
+      }
     }
   }
   
@@ -288,12 +280,12 @@ object Lab4 extends jsy.util.JsyApplication {
           }
         })
         
-      case GetField(e1, f) =>
-        throw new UnsupportedOperationException
+      case GetField(e1, f) => if (f != x) GetField(step(e1),f) else e
     }
   }
   
   def step(e: Expr): Expr = {
+    println(e);
     require(!isValue(e))
     
     def stepIfNotValue(e: Expr): Option[Expr] = if (isValue(e)) None else Some(step(e))
