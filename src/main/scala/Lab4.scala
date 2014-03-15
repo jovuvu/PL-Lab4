@@ -234,6 +234,20 @@ object Lab4 extends jsy.util.JsyApplication {
   
   
   /* Small-Step Interpreter */
+  /* Helpers */
+    
+  def toBoolean(v: Expr): Boolean = {
+    require(isValue(v))
+    (v: @unchecked) match {
+      case N(n) if (n compare 0.0) == 0 || (n compare -0.0) == 0 || n.isNaN => false
+      case N(_) => true
+      case B(b) => b
+      case Undefined => false
+      case S("") => false
+      case S(_) => true
+      case Function(_,_,_,_) => true
+    }
+  }
   
   def inequalityVal(bop: Bop, v1: Expr, v2: Expr): Boolean = {
     require(bop == Lt || bop == Le || bop == Gt || bop == Ge)
@@ -257,7 +271,7 @@ object Lab4 extends jsy.util.JsyApplication {
   
   def substitute(e: Expr, v: Expr, x: String): Expr = {
     require(isValue(v))
-    
+    println("SUBSTITUTE IN -> e: " + e + " v: " + v + " x: " + x)
     def subst(e: Expr): Expr = substitute(e, v, x)
     
     e match {
@@ -266,27 +280,27 @@ object Lab4 extends jsy.util.JsyApplication {
       case Unary(uop, e1) => Unary(uop, subst(e1))
       case Binary(bop, e1, e2) => Binary(bop, subst(e1), subst(e2))
       case If(e1, e2, e3) => If(subst(e1), subst(e2), subst(e3))
-      case Var(y) => if (x == y) v else e
+      case Var(y) => if (x == y) {println("VAR REPLACED: " + v + " to: " + x);v} else e
       case ConstDecl(y, e1, e2) => ConstDecl(y, subst(e1), if (x == y) e2 else subst(e2))
       case Function(Some(p),params, tann, e1) => 
         val blah = params.foldLeft(true){
-          (acc, h) => if (x != h && x != p) acc && true else acc && false
+          (acc, h) => if (x != h._1 && x != p) acc && true else acc && false
         }
-        if (blah == true) Function(Some(p), params, tann, subst(e1)) else e
+        if (blah == true) Function(Some(p), params, tann, substitute(e, e1, p)) else e
       case Function(None,params, tann, e1) => 
         val blah = params.foldLeft(true){
-          (acc, h) => if (x != h) acc && true else acc && false
+          (acc, h) => if (x != h._1) acc && true else acc && false
         }
         if (blah == true) Function(None, params, tann, subst(e1)) else e
       case Call(e1, args) =>
-        if (!isValue(e1)) Call(subst(e1),args) else Call(e1, mapFirst{ (ei: Expr) => if (!isValue(ei)) Some(subst(ei)) else None}(args))
+        //if (!isValue(e1)) Call(subst(e1),args) else Call(e1, mapFirst{ (ei: Expr) => if (!isValue(ei)) Some(subst(ei)) else None}(args))
+        Call(subst(e1), args.foldRight(Nil: List[Expr]){(h, acc) => subst(h) :: acc})
       case Obj(fields) =>
         Obj(fields.foldRight(Map.empty: Map[String, Expr]){
           (h, acc) => h match {
             case (key, ei) => if(!isValue(ei)) acc + (key -> subst(ei)) else acc + (key -> ei)
           }
         })
-        
       case GetField(e1, f) => e1 match {
         case Obj(fields) => if (f != x) GetField(step(e1),f) else e
       }
@@ -294,7 +308,6 @@ object Lab4 extends jsy.util.JsyApplication {
   }
   
   def step(e: Expr): Expr = {
-    println(e);
     require(!isValue(e))
     
     def stepIfNotValue(e: Expr): Option[Expr] = if (isValue(e)) None else Some(step(e))
@@ -307,28 +320,48 @@ object Lab4 extends jsy.util.JsyApplication {
       case Binary(Seq, v1, e2) if isValue(v1) => e2
       case Binary(Plus, S(s1), S(s2)) => S(s1 + s2)
       case Binary(Plus, N(n1), N(n2)) => N(n1 + n2)
+      case Binary(Minus, N(n1), N(n2)) => N(n1 - n2)
+      case Binary(Times, N(n1), N(n2)) => N(n1 * n2)
+      case Binary(Div, N(n1), N(n2)) => N(n1 / n2)
       case Binary(bop @ (Lt|Le|Gt|Ge), v1, v2) if isValue(v1) && isValue(v2) => B(inequalityVal(bop, v1, v2))
       case Binary(Eq, v1, v2) if isValue(v1) && isValue(v2) => B(v1 == v2)
       case Binary(Ne, v1, v2) if isValue(v1) && isValue(v2) => B(v1 != v2)
       case Binary(And, B(b1), e2) => if (b1) e2 else B(false)
       case Binary(Or, B(b1), e2) => if (b1) B(true) else e2
+      case If(e1,e2,e3) if (isValue(e1)) => if (toBoolean(e1)) e2 else e3
       case ConstDecl(x, v1, e2) if isValue(v1) => substitute(e2, v1, x)
       case Call(v1, args) if isValue(v1) && (args forall isValue) =>
         v1 match {
           case Function(p, params, _, e1) => {
+            println("SUPDAWG: " + v1 + " ARGS: " + args)
             val e1p = (params, args).zipped.foldRight(e1){
-              throw new UnsupportedOperationException
+              (h, acc) => substitute(acc, h._2, h._1._1)
             }
+            println("e1p COMPLETE: " + e1p)
             p match {
-              case None => throw new UnsupportedOperationException
-              case Some(x1) => throw new UnsupportedOperationException
+              case None => e1p
+              case Some(x1) => (params,args).zipped.foldRight(substitute(e1, v1, x1)){(h, acc)=>substitute(acc, h._2, h._1._1)} 
+//              case Some(x1) if (isValue(e1p)) => {
+//                println("IS VALUE")
+//                (params,args).zipped.foldRight(substitute(e1p, v1, x1)){(h, acc)=>substitute(acc, h._2, h._1._1)}
+//              }
+              case _ if(!isValue(e1p)) => println("NOT VALUE, STEPPING: " + e1p);step(e1p)
             }
           }
           case _ => throw new StuckError(e)
         }
-      /*** Fill-in more cases here. ***/
         
+      /*** Fill-in more cases here. ***/
+      
       /* Inductive Cases: Search Rules */
+      case Call(v1, args) if ((args forall isValue)==false) => v1 match {
+        case Function(p, params, _, e1) => {
+          println("SEARCH")
+          val steppedArgs = args.foldRight(Nil: List[Expr]){(h, acc) => step(h) :: acc}
+          Call(v1, steppedArgs)
+        }
+        case _ => throw new StuckError(e)
+      }
       case Print(e1) => Print(step(e1))
       case Unary(uop, e1) => Unary(uop, step(e1))
       case Binary(bop, v1, e2) if isValue(v1) => Binary(bop, v1, step(e2))

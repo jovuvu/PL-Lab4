@@ -42,11 +42,11 @@ class Lab4Spec extends FlatSpec {
   
   "typeInfer Function" should "check return type of function" in {
     val a = Function(None, List.empty, Some(TNumber), Binary(Plus, N(3),N(3)))
-    assert(typeInfer(Map.empty, a) == TNumber)
+    assert(typeInfer(Map.empty, a) == TFunction(List(), TNumber))
     val b = ConstDecl("X", N(3), Function(None, List.empty, Some(TNumber), Binary(Plus, Var("X"),N(3))))
-    assert(typeInfer(Map.empty, b) == TNumber)
+    assert(typeInfer(Map.empty, b) == TFunction(List(), TNumber))
     val c = Function(None, List.empty, Some(TString), Binary(Plus, S("Doo"),S("Poo")))
-    assert(typeInfer(Map.empty, c) == TString)
+    assert(typeInfer(Map.empty, c) == TFunction(List(), TString))
   }
   // Probably want to write some tests for typeInfer, substitute, and step.
   
@@ -55,4 +55,23 @@ class Lab4Spec extends FlatSpec {
     val b = Obj(a)
     typeInfer(Map.empty, b)
   }
+  
+  "typeInfer Binary Eq" should "check return type of Binary Eq with var" in {
+    val a = ConstDecl("n", N(0.0), Binary(Eq, Var("n"), N(0.0)))
+    assert(typeInfer(Map.empty, a) == TNumber)
+  }
+  val w = "w"
+  val y = "y"
+  val x = Function(Some(w),List((y,TNumber)),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0)))))))
+  val a = If(Binary(Eq,N(0.0),N(0.0)),N(0.1),Binary(Plus,N(0.0),Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0))))))
+  val b = Binary(Plus,N(0.0),Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0)))))
+  val c = Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0))))
+  val d = List(Binary(Minus,N(0.0),N(1.0)))
+  val e = Function(Some("myF"), List(("poo", TNumber), ("doo", TNumber)), None, Binary(Plus, Var("poo"), Var("doo")))
+  val f = Call(e, List(N(1),N(2)))
+  val g = iterateStep(f)
+  println("Output: " + f)
+  assert(iterateStep(f)==N(3))
+  //val z = ConstDecl(w,Function(Some(w),List((y,TNumber)),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
+  //println(typeInfer(Map.empty, x))
 }
