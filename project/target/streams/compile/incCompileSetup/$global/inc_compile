@@ -1,0 +1,87 @@
+format version: 1
+products:
+11 items
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$1.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$2.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$3.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$4.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$5.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$1.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$2.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$3.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$4.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$.class
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild.class
+binary dependencies:
+4 items
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> C:\Program Files\Java\jre7\lib\rt.jar
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> C:\Users\Bi\.ivy2\cache\org.scala-sbt\main\jars\main-0.13.1.jar
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> C:\Users\Bi\.ivy2\cache\org.scala-sbt\sbt\jars\sbt-0.13.1.jar
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> C:\Users\Bi\.sbt\boot\scala-2.10.3\lib\scala-library.jar
+source dependencies:
+0 items
+external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+class names:
+11 items
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$grader$1
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$grader$2
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$grader$3
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$grader$4
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$grader$5
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$root$1
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$root$2
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$root$3
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> LabBuild$$anonfun$root$4
+product stamps:
+11 items
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$1.class -> lastModified(1394878698215)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$2.class -> lastModified(1394878698219)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$3.class -> lastModified(1394878698223)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$4.class -> lastModified(1394878698226)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$grader$5.class -> lastModified(1394878698228)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$1.class -> lastModified(1394878698231)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$2.class -> lastModified(1394878698234)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$3.class -> lastModified(1394878698236)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$$anonfun$root$4.class -> lastModified(1394878698239)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild$.class -> lastModified(1394878698209)
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\target\scala-2.10\sbt-0.13\classes\LabBuild.class -> lastModified(1394878698184)
+source stamps:
+1 items
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> hash(5f6e3fb00ee6e1e6c67c575afe34d02fb1df913e)
+binary stamps:
+4 items
+C:\Program Files\Java\jre7\lib\rt.jar -> lastModified(1394878516078)
+C:\Users\Bi\.ivy2\cache\org.scala-sbt\main\jars\main-0.13.1.jar -> lastModified(1386688549000)
+C:\Users\Bi\.ivy2\cache\org.scala-sbt\sbt\jars\sbt-0.13.1.jar -> lastModified(1386688545000)
+C:\Users\Bi\.sbt\boot\scala-2.10.3\lib\scala-library.jar -> lastModified(1380275091000)
+class names:
+4 items
+C:\Program Files\Java\jre7\lib\rt.jar -> java.lang.Object
+C:\Users\Bi\.ivy2\cache\org.scala-sbt\main\jars\main-0.13.1.jar -> sbt.Build
+C:\Users\Bi\.ivy2\cache\org.scala-sbt\sbt\jars\sbt-0.13.1.jar -> sbt.package$
+C:\Users\Bi\.sbt\boot\scala-2.10.3\lib\scala-library.jar -> scala.Predef$
+internal apis:
+1 items
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlSIdu0j8FrMwCAAVJAAdhcGlIYXNoWgAIaGFzTWFjcm9MAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHBxgkiYAHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAFzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AA54cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAAITGFiQnVpbGR1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAZNb2R1bGV1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgAoeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgAnAHBzcQB+ACxzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4ADkwACWluaGVyaXRlZHEAfgAOTAAHcGFyZW50c3EAfgAOeHEAfgAwc3EAfgAnAHBzcQB+ACx1cQB+AAkAAAAAc3EAfgAnAHBzcQB+ACx1cQB+AAkAAAAAc3EAfgAnAHBzcQB+ACx1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAA3NyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4AFUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AC90AAVCdWlsZHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AL3NyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+ABV4cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAADc2J0c3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AE1zcQB+AEB0AAZPYmplY3RzcQB+AERzcQB+AEd1cQB+AEoAAAADc3EAfgBMdAAEamF2YXNxAH4ATHQABGxhbmdxAH4AUXNxAH4AQHQAA0FueXNxAH4ARHNxAH4AR3VxAH4ASgAAAAJzcQB+AEx0AAVzY2FsYXEAfgBRdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAABzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAUTFP8h9dXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgAVTAAPc291cmNlRGlyZWN0b3J5cQB+ABV4cHQATkQ6XEVjbGlwc2VcRWNsaXBzZSBQcm9qZWN0c1xQTC1MYWI0XHByb2plY3RcdGFyZ2V0XHNjYWxhLTIuMTBcc2J0LTAuMTNcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFF9uP7AO5uHmxnxXWv400C+x35E+
+external apis:
+0 items
+source infos:
+1 items
+D:\Eclipse\Eclipse Projects\PL-Lab4\project\Build.scala -> 
+AAAAAAAAAAA=
+compilations:
+1 items
+000 -> 
+rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABRMU/yH11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQATkQ6XEVjbGlwc2VcRWNsaXBzZSBQcm9qZWN0c1xQTC1MYWI0XHByb2plY3RcdGFyZ2V0XHNjYWxhLTIuMTBcc2J0LTAuMTNcY2xhc3Nlc3QAAS8=
+compile setup:
+1 items
+1 -> 
+AABORDpcRWNsaXBzZVxFY2xpcHNlIFByb2plY3RzXFBMLUxhYjRccHJvamVjdFx0YXJnZXRcc2NhbGEtMi4xMFxzYnQtMC4xM1xjbGFzc2VzAAAAAAAAAAAABjIuMTAuMwAAAAA=

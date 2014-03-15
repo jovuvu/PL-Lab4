@@ -6,8 +6,8 @@
 		module="lab4-grader_2.10"
 		revision="1.0"
 		conf="optional"
-		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
-		date="20140314154132"/>
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20140315041843"/>
 	<dependencies>
 	</dependencies>
 </ivy-report>
