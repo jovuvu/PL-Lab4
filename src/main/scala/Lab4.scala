@@ -288,7 +288,8 @@ object Lab4 extends jsy.util.JsyApplication {
         })
         
       case GetField(e1, f) => e1 match {
-        case Obj(fields) => if (f != x) GetField(step(e1),f) else e
+        case Obj(fields) => if (f != x) GetField(subst(e1),f) else e
+        case Var(_) => GetField(subst(e1),f)
       }
     }
   }
@@ -313,20 +314,40 @@ object Lab4 extends jsy.util.JsyApplication {
       case Binary(And, B(b1), e2) => if (b1) e2 else B(false)
       case Binary(Or, B(b1), e2) => if (b1) B(true) else e2
       case ConstDecl(x, v1, e2) if isValue(v1) => substitute(e2, v1, x)
-      case Call(v1, args) if isValue(v1) && (args forall isValue) =>
+      case Call(v1, args) if isValue(v1) && (args forall isValue) => {
         v1 match {
           case Function(p, params, _, e1) => {
             val e1p = (params, args).zipped.foldRight(e1){
-              throw new UnsupportedOperationException
+              (a:((String,Typ),Expr),fBody:Expr) => a match {
+                case ((v1Name,_),v1) => substitute(fBody,v1,v1Name)
+              }
             }
             p match {
-              case None => throw new UnsupportedOperationException
-              case Some(x1) => throw new UnsupportedOperationException
+              case None => e1
+              case Some(x1) => substitute(e1,e1,x1)
             }
           }
           case _ => throw new StuckError(e)
         }
+      }
       /*** Fill-in more cases here. ***/
+      case Call(e1,args) if (!isValue(e1)) => Call(step(e1),args)
+      case Call(v1,args) if (! args.forall(isValue)) => {
+        val (_,newArgs) = args.foldLeft((true,Nil:List[Expr])) {
+          (args,exp) => (args,exp) match {
+            case ((true,l),_) if (!isValue(exp)) => (false,(step(exp) +: l))
+            case ((false,l),_) => (false,exp +: l)
+          }
+        }
+        Call(v1,newArgs)
+      }
+      case Obj(map) => {
+        map.foldLeft((true,Map[String,Expr]())) {
+          (acc,e1) => (acc,e1) match {
+            case ((shouldStep,map),(f,curElement)) if (!isValue(curElement) && shouldStep) => (false,map + (f -> curElement))
+          }
+        }
+      }
         
       /* Inductive Cases: Search Rules */
       case Print(e1) => Print(step(e1))
