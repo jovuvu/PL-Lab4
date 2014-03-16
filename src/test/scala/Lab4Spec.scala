@@ -50,28 +50,38 @@ class Lab4Spec extends FlatSpec {
   }
   // Probably want to write some tests for typeInfer, substitute, and step.
   
-  "typeInfer Object" should "check return type of Object" in {
-    val a = Map(("poo" -> N(3)), ("pee" -> Binary(Plus, S("Doo"),S("Poo"))), ("doo" -> B(true)))
-    val b = Obj(a)
-    typeInfer(Map.empty, b)
-  }
-  
-  "typeInfer Binary Eq" should "check return type of Binary Eq with var" in {
-    val a = ConstDecl("n", N(0.0), Binary(Eq, Var("n"), N(0.0)))
-    assert(typeInfer(Map.empty, a) == TNumber)
-  }
-  val w = "w"
-  val y = "y"
-  val x = Function(Some(w),List((y,TNumber)),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0)))))))
-  val a = If(Binary(Eq,N(0.0),N(0.0)),N(0.1),Binary(Plus,N(0.0),Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0))))))
-  val b = Binary(Plus,N(0.0),Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0)))))
-  val c = Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0))))
-  val d = List(Binary(Minus,N(0.0),N(1.0)))
-  val e = Function(Some("myF"), List(("poo", TNumber), ("doo", TNumber)), None, Binary(Plus, Var("poo"), Var("doo")))
-  val f = Call(e, List(N(1),N(2)))
-  val g = iterateStep(f)
-  println("Output: " + f)
-  assert(iterateStep(f)==N(3))
+//  "typeInfer Object" should "check return type of Object" in {
+//    val a = Map(("poo" -> N(3)), ("pee" -> Binary(Plus, S("Doo"),S("Poo"))), ("doo" -> B(true)))
+//    val b = Obj(a)
+//    typeInfer(Map.empty, b)
+//  }
+//  
+//  "typeInfer Binary Eq" should "check return type of Binary Eq with var" in {
+//    val a = ConstDecl("n", N(0.0), Binary(Eq, Var("n"), N(0.0)))
+//    assert(typeInfer(Map.empty, a) == TBool)
+//  }
+//  val w = "w"
+//  val y = "y"
+//  val x = Function(Some(w),List((y,TNumber)),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0)))))))
+//  val a = If(Binary(Eq,N(0.0),N(0.0)),N(0.1),Binary(Plus,N(0.0),Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0))))))
+//  val b = Binary(Plus,N(0.0),Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0)))))
+//  val c = Call(N(0.0),List(Binary(Minus,N(0.0),N(1.0))))
+//  val d = List(Binary(Minus,N(0.0),N(1.0)))
+//  val e = Function(Some("myF"), List(("poo", TNumber), ("doo", TNumber)), None, Binary(Plus, Var("poo"), Var("doo")))
+//  val f = Call(e, List(N(1),N(2)))
+//  val g = iterateStep(f)
+//  println("Output: " + f)
+//  assert(iterateStep(f)==N(3))
+//  val h = Binary(Plus,Call(Call(Function(None,List(("x",TNumber)),None,Function(None,List(("y",TNumber)),None,Binary(Minus,Var("x"),Var("y")))),List(N(1.0))),List(N(0.0))),N(0.1))
+//  iterateStep(h)
+//  val i = ConstDecl("factorial",Function(Some("f"),List(("n",TNumber)),None,If(Binary(Eq,Var("n"),N(0.0)),N(1.0),Binary(Times,Var("n"),Call(Var("f"),List(Binary(Minus,Var("n"),N(1.0))))))),Call(Var("factorial"),List(N(3.0))))
+//  iterateStep(i)
+//  println("JESUSFUCK")
+//  val j = ConstDecl("pair",Function(None,List(("x",TNumber), ("y",TNumber)),None,Obj(Map("x" -> Var("x"), "y" -> Var("y")))),ConstDecl("p",Call(Var("pair"),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var("p"),"x"),GetField(Var("p"),"y"))))
+//  iterateStep(j)
+//  val k = ConstDecl("factorial",Function(Some("f"),List(("n",TNumber)),Some(TNumber),If(Binary(Eq,Var("n"),N(0.0)),N(1.0),Binary(Times,Var("n"),Call(Var("f"),List(Binary(Minus,Var("n"),N(1.0))))))),Call(Var("factorial"),List(N(4.0))))
+//  println("INFERRING: " + k)
+//  typeInfer(Map.empty, k)
   //val z = ConstDecl(w,Function(Some(w),List((y,TNumber)),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
   //println(typeInfer(Map.empty, x))
 }

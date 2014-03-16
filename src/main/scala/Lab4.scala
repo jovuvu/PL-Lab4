@@ -130,7 +130,7 @@ object Lab4 extends jsy.util.JsyApplication {
     // Some shortcuts for convenience
     def typ(e1: Expr) = typeInfer(env, e1)
     def err[T](tgot: Typ, e1: Expr): T = throw StaticTypeError(tgot, e1, e)
-
+    //println("typeInfer with e: " + e + " || env: " + env)
     e match {
       case Print(e1) => typ(e1); TUndefined
       case N(_) => TNumber
@@ -160,7 +160,7 @@ object Lab4 extends jsy.util.JsyApplication {
         
       case Binary(Eq|Ne, e1, e2) => (typ(e1)) match {
         case te1 if (!hasFunctionTyp(te1)) => typ(e2) match {
-          case te2 if (!hasFunctionTyp(te2)) => te2
+          case te2 if (!hasFunctionTyp(te2)) => if (te2==te1) TBool else err(te2, e2)
           case tgot => err (tgot, e2)
         }
         case tgot => err(tgot, e1)
@@ -182,9 +182,9 @@ object Lab4 extends jsy.util.JsyApplication {
       }
       
       case If(e1, e2, e3) => typ(e1) match {
-        case TBool => (typ(e1),typ(e2)) match {
-          case (te1,te2) if (te1 == te2) => te1
-          case (_,te2) => err(te2,e3)
+        case TBool => (typ(e2),typ(e3)) match {
+          case (te2,te3) if (te2 == te3) => te2
+          case (_,te3) => err(te3,e3)
         }
         case tgot => err(tgot,e1)
       }
@@ -200,10 +200,6 @@ object Lab4 extends jsy.util.JsyApplication {
         }
         // Bind to env2 an environment that extends env1 with bindings for params.
         val env2 = params.foldLeft(env1: Map[String, Typ])((env1, h) => env1 + h)
-//        println("env: " + env1)
-//        println("params: " + params)
-//        println("env2: " + env2)
-        // Match on whether the return type is specified.
         tann match {
           case None => TFunction(params, typeInfer(env2, e1))
           case Some(tret) => 
@@ -271,7 +267,7 @@ object Lab4 extends jsy.util.JsyApplication {
   
   def substitute(e: Expr, v: Expr, x: String): Expr = {
     require(isValue(v))
-    println("SUBSTITUTE IN -> e: " + e + " v: " + v + " x: " + x)
+    //println("Substituting with: -> e: " + e + " || v: " + v + " || x: " + x)
     def subst(e: Expr): Expr = substitute(e, v, x)
     
     e match {
@@ -280,36 +276,30 @@ object Lab4 extends jsy.util.JsyApplication {
       case Unary(uop, e1) => Unary(uop, subst(e1))
       case Binary(bop, e1, e2) => Binary(bop, subst(e1), subst(e2))
       case If(e1, e2, e3) => If(subst(e1), subst(e2), subst(e3))
-      case Var(y) => if (x == y) {println("VAR REPLACED: " + v + " to: " + x);v} else e
+      case Var(y) => if (x == y) v else e
       case ConstDecl(y, e1, e2) => ConstDecl(y, subst(e1), if (x == y) e2 else subst(e2))
       case Function(Some(p),params, tann, e1) => 
         val blah = params.foldLeft(true){
           (acc, h) => if (x != h._1 && x != p) acc && true else acc && false
         }
-        if (blah == true) Function(Some(p), params, tann, substitute(e, e1, p)) else e
+        if (blah == true) Function(Some(p), params, tann, subst(e1)) else e
       case Function(None,params, tann, e1) => 
         val blah = params.foldLeft(true){
           (acc, h) => if (x != h._1) acc && true else acc && false
         }
         if (blah == true) Function(None, params, tann, subst(e1)) else e
       case Call(e1, args) =>
-        //if (!isValue(e1)) Call(subst(e1),args) else Call(e1, mapFirst{ (ei: Expr) => if (!isValue(ei)) Some(subst(ei)) else None}(args))
         Call(subst(e1), args.foldRight(Nil: List[Expr]){(h, acc) => subst(h) :: acc})
       case Obj(fields) =>
-        Obj(fields.foldRight(Map.empty: Map[String, Expr]){
-          (h, acc) => h match {
-            case (key, ei) => if(!isValue(ei)) acc + (key -> subst(ei)) else acc + (key -> ei)
-          }
-        })
-      case GetField(e1, f) => e1 match {
-        case Obj(fields) => if (f != x) GetField(step(e1),f) else e
-      }
+        val subbedFields = fields.foldLeft(Map.empty: Map[String, Expr]){(acc, h) => h match {case (key, ei) => acc + (key -> subst(ei))}}
+        Obj(subbedFields)
+      case GetField(e1, f) => GetField(subst(e1), f)
     }
   }
   
   def step(e: Expr): Expr = {
+    //println("Stepping with e: " + e)
     require(!isValue(e))
-    
     def stepIfNotValue(e: Expr): Option[Expr] = if (isValue(e)) None else Some(step(e))
     
     e match {
@@ -332,20 +322,12 @@ object Lab4 extends jsy.util.JsyApplication {
       case ConstDecl(x, v1, e2) if isValue(v1) => substitute(e2, v1, x)
       case Call(v1, args) if isValue(v1) && (args forall isValue) =>
         v1 match {
-          case Function(p, params, _, e1) => {
-            println("SUPDAWG: " + v1 + " ARGS: " + args)
-            val e1p = (params, args).zipped.foldRight(e1){
-              (h, acc) => substitute(acc, h._2, h._1._1)
-            }
-            println("e1p COMPLETE: " + e1p)
+          case Function(p, params, tann, e1) => {
+            //println("Stepping function call.")
             p match {
-              case None => e1p
-              case Some(x1) => (params,args).zipped.foldRight(substitute(e1, v1, x1)){(h, acc)=>substitute(acc, h._2, h._1._1)} 
-//              case Some(x1) if (isValue(e1p)) => {
-//                println("IS VALUE")
-//                (params,args).zipped.foldRight(substitute(e1p, v1, x1)){(h, acc)=>substitute(acc, h._2, h._1._1)}
-//              }
-              case _ if(!isValue(e1p)) => println("NOT VALUE, STEPPING: " + e1p);step(e1p)
+              //substitute arguments into our function body
+              case None => (params, args).zipped.foldRight(e1){(h,acc) => substitute(acc, h._2,h._1._1)}
+              case Some(x1) => (params, args).zipped.foldRight(substitute(e1, v1, x1)){(h,acc) => substitute(acc, h._2,h._1._1)}
             }
           }
           case _ => throw new StuckError(e)
@@ -354,20 +336,26 @@ object Lab4 extends jsy.util.JsyApplication {
       /*** Fill-in more cases here. ***/
       
       /* Inductive Cases: Search Rules */
-      case Call(v1, args) if ((args forall isValue)==false) => v1 match {
-        case Function(p, params, _, e1) => {
-          println("SEARCH")
-          val steppedArgs = args.foldRight(Nil: List[Expr]){(h, acc) => step(h) :: acc}
-          Call(v1, steppedArgs)
-        }
-        case _ => throw new StuckError(e)
-      }
+      case Call(v1, args) => if(!isValue(v1)) Call(step(v1), args) else Call(v1, args.foldRight(Nil: List[Expr]){(h,acc) => if(!isValue(h)) step(h) :: acc else h :: acc})
       case Print(e1) => Print(step(e1))
       case Unary(uop, e1) => Unary(uop, step(e1))
       case Binary(bop, v1, e2) if isValue(v1) => Binary(bop, v1, step(e2))
       case Binary(bop, e1, e2) => Binary(bop, step(e1), e2)
       case If(e1, e2, e3) => If(step(e1), e2, e3)
       case ConstDecl(x, e1, e2) => ConstDecl(x, step(e1), e2)
+      case Obj(fields) => 
+        //println("Stepping fields")
+        val steppedFields = fields.foldLeft(Map.empty: Map[String, Expr]) {(acc,h) => h match { case (key, ei) => if (!isValue(ei)) acc + (key -> step(ei)) else acc + (key -> ei) }}
+        Obj(steppedFields)
+        
+      //search and do rule for GetField
+      case GetField(egf, f) =>
+        egf match {
+          case Obj(fields) => 
+            val ef = fields(f)
+            if (!isValue(ef)) step(ef) else ef
+          case _ => throw StuckError(egf)
+        }
       /*** Fill-in more cases here. ***/
       
       /* Everything else is a stuck error. Should not happen if e is well-typed. */
