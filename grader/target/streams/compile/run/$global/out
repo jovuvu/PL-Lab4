@@ -1,6 +1,7 @@
 [0m[[0minfo[0m] [0mRunning Lab4Grader [0m
 [0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
 [0m[[0mdebug[0m] [0m  Classpath:[0m
+<<<<<<< HEAD
 [0m[[0mdebug[0m] [0m	D:\Eclipse\Eclipse Projects\PL-Lab4\grader\target\scala-2.10\classes[0m
 [0m[[0mdebug[0m] [0m	D:\Eclipse\Eclipse Projects\PL-Lab4\target\scala-2.10\classes[0m
 [0m[[0mdebug[0m] [0m	D:\Eclipse\Eclipse Projects\PL-Lab4\lib\liblab4.jar[0m
@@ -8,6 +9,15 @@
 [0m[[0mdebug[0m] [0m	C:\Users\Bi\.sbt\boot\scala-2.10.3\lib\scala-library.jar[0m
 [0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
 [0m[[0mdebug[0m] [0m	Thread run-main-0 exited.[0m
+=======
+[0m[[0mdebug[0m] [0m	/Users/Andrew/Developer/Scala/PL-Lab4/grader/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0m	/Users/Andrew/Developer/Scala/PL-Lab4/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0m	/Users/Andrew/Developer/Scala/PL-Lab4/lib/liblab4.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/Andrew/Developer/Scala/PL-Lab4/lib/scalatest_2.10-2.0.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/Andrew/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.3.jar[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
+[0m[[0mdebug[0m] [0m	Thread run-main exited.[0m
+>>>>>>> 621dc6d09c1da96b3a5a9a5c8d459ad5ee1f9ddb
 [0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
 [0m[[0mdebug[0m] [0mSandboxed run complete..[0m
 [0m[[0mdebug[0m] [0mExited with code 0[0m

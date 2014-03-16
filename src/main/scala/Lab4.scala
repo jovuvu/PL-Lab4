@@ -302,7 +302,8 @@ object Lab4 extends jsy.util.JsyApplication {
           }
         })
       case GetField(e1, f) => e1 match {
-        case Obj(fields) => if (f != x) GetField(step(e1),f) else e
+        case Obj(fields) => if (f != x) GetField(subst(e1),f) else e
+        case Var(_) => GetField(subst(e1),f)
       }
     }
   }
@@ -330,15 +331,22 @@ object Lab4 extends jsy.util.JsyApplication {
       case Binary(Or, B(b1), e2) => if (b1) B(true) else e2
       case If(e1,e2,e3) if (isValue(e1)) => if (toBoolean(e1)) e2 else e3
       case ConstDecl(x, v1, e2) if isValue(v1) => substitute(e2, v1, x)
-      case Call(v1, args) if isValue(v1) && (args forall isValue) =>
+      case Call(v1, args) if isValue(v1) && (args forall isValue) => {
         v1 match {
           case Function(p, params, _, e1) => {
             println("SUPDAWG: " + v1 + " ARGS: " + args)
             val e1p = (params, args).zipped.foldRight(e1){
+<<<<<<< HEAD
               (h, acc) => substitute(acc, h._2, h._1._1)
+=======
+              (a:((String,Typ),Expr),fBody:Expr) => a match {
+                case ((v1Name,_),v1) => substitute(fBody,v1,v1Name)
+              }
+>>>>>>> 621dc6d09c1da96b3a5a9a5c8d459ad5ee1f9ddb
             }
             println("e1p COMPLETE: " + e1p)
             p match {
+<<<<<<< HEAD
               case None => e1p
               case Some(x1) => (params,args).zipped.foldRight(substitute(e1, v1, x1)){(h, acc)=>substitute(acc, h._2, h._1._1)} 
 //              case Some(x1) if (isValue(e1p)) => {
@@ -346,10 +354,36 @@ object Lab4 extends jsy.util.JsyApplication {
 //                (params,args).zipped.foldRight(substitute(e1p, v1, x1)){(h, acc)=>substitute(acc, h._2, h._1._1)}
 //              }
               case _ if(!isValue(e1p)) => println("NOT VALUE, STEPPING: " + e1p);step(e1p)
+=======
+              case None => e1
+              case Some(x1) => substitute(e1,e1,x1)
+>>>>>>> 621dc6d09c1da96b3a5a9a5c8d459ad5ee1f9ddb
             }
           }
           case _ => throw new StuckError(e)
         }
+<<<<<<< HEAD
+=======
+      }
+      /*** Fill-in more cases here. ***/
+      case Call(e1,args) if (!isValue(e1)) => Call(step(e1),args)
+      case Call(v1,args) if (! args.forall(isValue)) => {
+        val (_,newArgs) = args.foldLeft((true,Nil:List[Expr])) {
+          (args,exp) => (args,exp) match {
+            case ((true,l),_) if (!isValue(exp)) => (false,(step(exp) +: l))
+            case ((false,l),_) => (false,exp +: l)
+          }
+        }
+        Call(v1,newArgs)
+      }
+      case Obj(map) => {
+        map.foldLeft((true,Map[String,Expr]())) {
+          (acc,e1) => (acc,e1) match {
+            case ((shouldStep,map),(f,curElement)) if (!isValue(curElement) && shouldStep) => (false,map + (f -> curElement))
+          }
+        }
+      }
+>>>>>>> 621dc6d09c1da96b3a5a9a5c8d459ad5ee1f9ddb
         
       /*** Fill-in more cases here. ***/
       
