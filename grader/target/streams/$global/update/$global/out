@@ -1,14 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [0m[[0minfo[0m] [0mUpdating {file:/D:/Eclipse/Eclipse%20Projects/PL-Lab4/}lab4-grader...[0m
 =======
 [0m[[0minfo[0m] [0mUpdating {file:/Users/Andrew/Developer/Scala/PL-Lab4/}lab4-grader...[0m
 >>>>>>> 621dc6d09c1da96b3a5a9a5c8d459ad5ee1f9ddb
+=======
+[0m[[0minfo[0m] [0mUpdating {file:/D:/Eclipse/Eclipse%20Projects/lab4/}lab4-grader...[0m
+>>>>>>> Vu
 [0m[[0mdebug[0m] [0m:: resolving dependencies :: lab4-grader#lab4-grader_2.10;1.0[0m
-[0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
+[0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom][0m
 [0m[[0mdebug[0m] [0m	validate = true[0m
 [0m[[0mdebug[0m] [0m	refresh = false[0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile][0m
+<<<<<<< HEAD
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.3 ...[0m
 <<<<<<< HEAD
@@ -23,39 +28,50 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
+=======
+>>>>>>> Vu
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->lab4#lab4_2.10;2.0 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving lab4#lab4_2.10;2.0 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: lab4#lab4_2.10;2.0 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0m	found lab4#lab4_2.10;2.0 in inter-project[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.10.3 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.3[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.10.3[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.3 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
-[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->lab4#lab4_2.10;2.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [test][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->lab4#lab4_2.10;2.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'provided'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [provided][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'optional'[0m
@@ -63,45 +79,45 @@
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile-internal'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile-internal][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->lab4#lab4_2.10;2.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [optional][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [provided][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime-internal'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [runtime-internal][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->lab4#lab4_2.10;2.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [optional][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test-internal'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [test-internal][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [test][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->lab4#lab4_2.10;2.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4#lab4_2.10;2.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [optional][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [provided][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'plugin'[0m
@@ -112,6 +128,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [docs][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'pom'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [pom][0m
+<<<<<<< HEAD
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'scala-tool'[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies for lab4-grader#lab4-grader_2.10;1.0 [scala-tool][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies lab4-grader#lab4-grader_2.10;1.0->org.scala-lang#scala-compiler;2.10.3 [scala-tool->default][0m
@@ -210,4 +227,22 @@
 [0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 scala-tool produced in /Users/Andrew/Developer/Scala/PL-Lab4/grader/target/resolution-cache/reports/lab4-grader-lab4-grader_2.10-scala-tool.xml[0m
 [0m[[0mdebug[0m] [0m	resolve done (91ms resolve - 5ms download)[0m
 >>>>>>> 621dc6d09c1da96b3a5a9a5c8d459ad5ee1f9ddb
+=======
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\lab4-grader\lab4-grader_2.10\1.0\resolved.xml.xml[0m
+[0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 20ms :: artifacts dl 1ms[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 compile produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 runtime produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 test produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 provided produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 optional produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 compile-internal produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 runtime-internal produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 test-internal produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 plugin produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 sources produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 docs produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for lab4-grader#lab4-grader_2.10;1.0 pom produced in D:\Eclipse\Eclipse Projects\lab4\grader\target\resolution-cache\reports\lab4-grader-lab4-grader_2.10-pom.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (20ms resolve - 1ms download)[0m
+>>>>>>> Vu
 [0m[[0minfo[0m] [0mDone updating.[0m
