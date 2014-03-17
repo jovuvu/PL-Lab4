@@ -1,0 +1,6 @@
+const a = function exp(x:number,z:number, max:number) : number {
+	
+	const b = (x<max) ? (exp((x*z),z,max)) : (x);
+	return b
+};
+a(2,2,1024)
